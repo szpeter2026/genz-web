@@ -165,7 +165,7 @@
       if (status) {
         status.textContent =
           source === "api"
-            ? "Live pricing loaded from Looma API (region=US)."
+            ? "Live pricing loaded from PlanetX API (region=US)."
             : "Pricing shown from contract fallback (API unavailable).";
         status.className = "pricing-status " + (source === "api" ? "ok" : "");
       }
