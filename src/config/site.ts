@@ -1,10 +1,9 @@
-/* GenZ site configuration */
-window.GENZ_SITE = {
+export const SITE_CONFIG = {
   legalEntityName: "YEDALL LIMITED",
   productName: "PlanetX",
   brandName: "GenZ",
-  tagline: "AI Career Growth Partner",
+  taglineKey: "site.tagline",
   supportEmail: "zervi@genz.ltd",
   siteUrl: "https://genz.ltd",
-  apiBase: "https://api.genz.ltd",
-};
+  apiBase: import.meta.env.VITE_API_BASE || "https://api.genz.ltd",
+} as const;

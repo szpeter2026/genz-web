@@ -1,62 +1,52 @@
 # GenZ Web — genz.ltd
 
-Static marketing site for Stripe merchant review and USD subscription positioning.
-
-**Brand:** GenZ · **Product:** PlanetX · **Tagline:** AI Career Growth Partner  
+**Stack:** Vite + React + `react-i18next` (English / 中文)  
+**Brand:** GenZ · **Product:** PlanetX  
 **Legal Entity:** YEDALL LIMITED  
-**Deploy:** Vercel → genz.ltd
+**Deploy:** Vercel → `genz.ltd` / `www.genz.ltd`
 
-## Pages
+Marketing SPA for Stripe merchant review and USD subscription positioning.
 
-| URL | File |
+## i18n
+
+- Locales: `src/i18n/locales/en.json`, `zh.json`
+- Language switcher in header (persists to `localStorage` key `genz_lang`)
+- Default: browser language (`zh*` → 中文, else English)
+
+## Routes
+
+| URL | Page |
 |-----|------|
-| `/` | `index.html` |
-| `/pricing` | `pricing.html` |
-| `/legal/privacy` | `legal/privacy.html` |
-| `/legal/terms` | `legal/terms.html` |
-| `/legal/refund` | `legal/refund.html` |
+| `/` | Home |
+| `/pricing` | Pricing |
+| `/legal/privacy` | Privacy |
+| `/legal/terms` | Terms |
+| `/legal/refund` | Refund |
 
-URL rewrites configured in `vercel.json`.
+Legacy `.html` paths redirect to SPA routes.
+
+## Local dev
+
+```bash
+npm install
+npm run dev
+# http://localhost:5180
+```
 
 ## Vercel deploy
 
 1. Import this repo on Vercel
-2. Framework Preset: **Other**
-3. Root Directory: `./` (repo root)
-4. Build Command: leave empty
-5. Output Directory: leave empty
-6. Deploy
+2. Framework Preset: **Vite**
+3. Build Command: `npm run build`
+4. Output Directory: `dist`
+5. Bind `genz.ltd` and `www.genz.ltd` in Project Settings → Domains
 
-Bind `genz.ltd` and `www.genz.ltd` in Project Settings → Domains.
+Push to `main` triggers automatic deployment.
 
 ## Config
 
-All site-wide config lives in `assets/config.js`:
-
-```js
-window.GENZ_SITE = {
-  legalEntityName: "YEDALL LIMITED",
-  brandName: "GenZ",
-  productName: "PlanetX",
-  tagline: "AI Career Growth Partner",
-  supportEmail: "support@genz.ltd",
-  siteUrl: "https://genz.ltd",
-  apiBase: "https://api.genz.ltd",
-};
-```
-
-## Pricing
-
-Pricing loads dynamically from `api.genz.ltd/v1/payment/plans?region=US` with fallback to static defaults.
-
-| Tier | Price | Stripe fee (3.4% + HK$2.35) | Net |
-|------|-------|------|-----|
-| Free | $0 | — | — |
-| Supporter | $1.99/mo | ~$0.37 | $1.62 |
-| Pro | $5.99/mo | ~$0.50 | $5.49 |
-
-> Supporter fee ratio is ~18%. Consider raising to $4.99+ or going Free → Pro only.
+Site-wide config: `src/config/site.ts` → `legalEntityName`, `apiBase`, etc.
 
 ## Source
 
-Extracted from [looma-zervi](https://github.com/szpeter2026/looma-zervi) `frontend/packages/genz-web` for independent Vercel deployment.
+Synced from [looma-zervi](https://github.com/szpeter2026/looma-zervi) `frontend/packages/genz-web` (`release/overseas`).
