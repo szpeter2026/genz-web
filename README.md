@@ -1,9 +1,8 @@
-# GenZ Web — genz.ltd
+# GenZ Web — genz.ltd (Stripe review site)
 
+**Branch:** `release/overseas`  
 **Stack:** Vite + React + `react-i18next` (English / 中文)  
-**Brand:** GenZ · **Product:** PlanetX  
-**Legal Entity:** YEDALL LIMITED  
-**Deploy:** Vercel → `genz.ltd` / `www.genz.ltd`
+**Brand:** GenZ · **Product:** PlanetX
 
 Marketing SPA for Stripe merchant review and USD subscription positioning.
 
@@ -28,25 +27,19 @@ Legacy `.html` paths redirect to SPA routes.
 ## Local dev
 
 ```bash
-npm install
-npm run dev
+cd frontend
+pnpm install
+pnpm dev:genz-web
 # http://localhost:5180
 ```
 
-## Vercel deploy
+## Build & deploy
 
-1. Import this repo on Vercel
-2. Framework Preset: **Vite**
-3. Build Command: `npm run build`
-4. Output Directory: `dist`
-5. Bind `genz.ltd` and `www.genz.ltd` in Project Settings → Domains
+```bash
+cd frontend && pnpm build:genz-web
+bash scripts/deploy-genz-web.sh   # rsync dist/ → /var/www/genz-web
+```
 
-Push to `main` triggers automatic deployment.
+Legal entity name: `src/config/site.ts` → `legalEntityName`
 
-## Config
-
-Site-wide config: `src/config/site.ts` → `legalEntityName`, `apiBase`, etc.
-
-## Source
-
-Synced from [looma-zervi](https://github.com/szpeter2026/looma-zervi) `frontend/packages/genz-web` (`release/overseas`).
+See: `docs/OVERSEAS_DEPLOY.md`

@@ -1,5 +1,5 @@
 {
-  "name": "genz-web",
+  "name": "@looma/genz-web",
   "private": true,
   "version": "0.2.0",
   "description": "GenZ / PlanetX overseas marketing site for www.genz.ltd (Stripe review + USD subscriptions)",
